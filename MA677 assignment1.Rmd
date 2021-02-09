@@ -1,6 +1,6 @@
 ---
-title: "MA677 Assignment1"
-author: ""
+title: "MA677 Assignment 1"
+author: "Yuelin Jiang"
 date: "2/9/2021"
 output: pdf_document
 ---
@@ -26,11 +26,9 @@ authors reached their conclusion that the critical value should be between 69 an
 Replicate and explain Figure 3.7.
 
 
-# Reproducing the graph in Figure 3.7 
-```{r, echo=FALSE}
-
+## Reproducing the graph in Figure 3.7 
+```{r}
 n = 100
-
 # make a function to calculate alpha(p) point
 alpha <- function(m, n, p){
   sum(dbinom(m:n, n, p, log=FALSE))
@@ -58,8 +56,28 @@ segments(0.6, 0.05, 0.6, 0.95)
 segments(0.6, 0.95, 0.8, 0.95)
 segments(0.8, 0.05, 0.8, 0.95)
 segments(0.6, 0.05, 0.8, 0.05)
-
-
 ```
 
+
 ## Explaining Critical Value
+
+We conclude critical value to be between 69 and 73 inclusive. Graphically we have to choose critical values m which make our alpha function enters from the bottom of the box and exits from the top of the box. Within the box is our 95% significant range that we will reject the null hypothesis. Any m that make an alpha function enters or exits outside the box increases our risks of Type I and Type II errors. When p=0.6 we want the probability to reject the null hypothesis to be low to avoid Type I error, and when p=0.8 we want the probability to reject the null hypothesis to be high to avoid Type II error. 
+
+For example, when m = 68 and m = 74 are drawn, as shown below:
+
+```{r}
+# plotting critical values that give Type I and Type II errors 
+plot(ite, fy(68), type = "l", xlab = "p", ylab = "Probability to reject null hypothesis")
+lines(ite, fy(74), type = "l")
+
+# plot significant levels from 0.05 to 0.95
+segments(0.6, 0.05, 0.6, 0.95)
+segments(0.6, 0.95, 0.8, 0.95)
+segments(0.8, 0.05, 0.8, 0.95)
+segments(0.6, 0.05, 0.8, 0.05)
+```
+
+When m = 68, alpha function--the probability to reject null hypothesis at p=0.6 is higher than 0.05. That's not a good sign. We have higher risk of committing a Type I error. 
+When m = 74, our alpha function-- the probability to accept null hypothesis is lower than 0.95. We have higher risk of committing a Type II error.
+
+So we conclude critical values have to be between 69 to 73. 
