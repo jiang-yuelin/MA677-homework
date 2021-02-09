@@ -27,7 +27,7 @@ Replicate and explain Figure 3.7.
 
 
 ## Reproducing the graph in Figure 3.7 
-```{r}
+```{r, echo=FALSE}
 n = 100
 # make a function to calculate alpha(p) point
 alpha <- function(m, n, p){
@@ -65,7 +65,7 @@ We conclude critical value to be between 69 and 73 inclusive. Graphically we hav
 
 For example, when m = 68 and m = 74 are drawn, as shown below:
 
-```{r}
+```{r, echo=FALSE}
 # plotting critical values that give Type I and Type II errors 
 plot(ite, fy(68), type = "l", xlab = "p", ylab = "Probability to reject null hypothesis")
 lines(ite, fy(74), type = "l")
