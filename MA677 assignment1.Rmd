@@ -48,7 +48,7 @@ for (i in ite) {
   y <- append(y, al)
 }
   y
-}
+} 
 
 # plotting two lines when m= 69 and 73
 plot(ite, fy(69), type = "l", xlab = "p", ylab = "Probability to reject null hypothesis")
