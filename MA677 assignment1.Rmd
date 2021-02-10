@@ -99,10 +99,9 @@ for (i in 80:1) {
     break;
   }
 }
-
-
-
 ```
 
+## Homework credit
 
+Aoyi Li helped me with directly calculating the maximum and minimum critical values using for loop codes. Credits to her. 
 
