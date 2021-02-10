@@ -12,6 +12,7 @@ library(ggplot2)
 
 ## Assignment: Due – Wednesday, February 10
 
+
 In Chapter 2 of G&S, Example 3.11 uses the binomial distribution to demonstrate the logic of
 hypothesis testing with a simple example. 
 
@@ -27,6 +28,8 @@ Replicate and explain Figure 3.7.
 
 
 ## Reproducing the graph in Figure 3.7 
+
+
 ```{r, echo=FALSE}
 n = 100
 # make a function to calculate alpha(p) point
@@ -60,11 +63,15 @@ segments(0.6, 0.05, 0.8, 0.05)
 
 
 
-## Explaining Critical Value from Graph 
+## Explaining Critical Value from the above Graph 
 
-We conclude critical value to be between 69 and 73 inclusive. Graphically we have to choose critical values m which make our alpha function enters from the bottom of the box and exits from the top of the box. Within the box is our 95% significant range that we will reject the null hypothesis. Any m that make an alpha function enters or exits outside the box increases our risks of Type I and Type II errors. When p=0.6 we want the probability to reject the null hypothesis to be low to avoid Type I error, and when p=0.8 we want the probability to reject the null hypothesis to be high to avoid Type II error. 
 
-For example, when m = 68 and m = 74 are drawn, as shown below:
+We conclude critical value to be between 69 and 73 inclusive. Graphically we have to choose critical values m which make our alpha function enters from the bottom of the box and exits from the top of the box. Within the box is our 90% significant range. Any m that make an alpha function enters or exits outside the bottom or top of the box increases our risks of Type I and Type II errors. 
+
+When p=0.6, we want the probability to reject the null hypothesis to be low to avoid Type I error. 
+When p=0.8, we want the probability to reject the null hypothesis to be high to avoid Type II error. 
+
+For example, when critical value m = 68 and m = 74 are drawn, they enter and exit outside of our 90% range, as shown below:
 
 ```{r, echo=FALSE}
 # plotting critical values that give Type I and Type II errors 
@@ -78,12 +85,13 @@ segments(0.8, 0.05, 0.8, 0.95)
 segments(0.6, 0.05, 0.8, 0.05)
 ```
 
-When m = 68, alpha function--the probability to reject null hypothesis at p=0.6 is higher than 0.05. That's not a good sign. We have higher risk of committing a Type I error. 
-When m = 74, our alpha function-- the probability to accept null hypothesis is lower than 0.95. We have higher risk of committing a Type II error.
+When m = 68, alpha function--the probability to reject null hypothesis at p=0.6 is higher than 0.05. That means the probability to reject the null hypothesis that a drug with p=0.6 effectiveness is same as the original drug is higher than 5%. We have a higher than 5% chance of rejecting the null hypothesis when it's in fact correct, thus committing a Type I error. 
 
-So we conclude critical values have to be between 69 to 73. 
+When m = 74, our alpha function-- the probability to reject null hypothesis at p = 0.8 is lower than 0.95, meaning the probability to accept that a much more effective drug(p=0.8) is no different than the original drug is higher than 0.05. We have a higher than 5% chance of accepting a null hypothesis when it's in fact wrong, thus committing a Type II error.
 
-If we want to find critical values using code, we could use for loop:
+So we conclude critical values to be between 69 to 73. 
+If we want to find critical values using code, we could use two for loops:
+
 ```{r}
 # for loop to get minimum critical value
 for (i in 60:n) {
